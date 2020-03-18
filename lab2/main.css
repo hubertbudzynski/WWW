@@ -26,7 +26,6 @@ li {
     background-color: rgb(64, 150, 231);
 }   
 
-
 li a{
     text-transform: uppercase;
 }
@@ -219,4 +218,12 @@ div {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.kontakt {
+    text-align: center;
+}
+p.kontakt{  
+    background-color: skyblue;
+    font-weight: bold;
 }
