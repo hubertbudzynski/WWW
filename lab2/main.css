@@ -1,0 +1,222 @@
+
+footer {
+    background-color: 
+aliceblue;
+color:
+    tomato;
+    font-family: sans-serif;
+    font-size: 30px;
+    width: 50%;
+}
+
+.footer > img {
+    width: 10%;
+}
+li {
+    display: flex;
+    width: 150px;
+    list-style: none;
+    background-color: lightskyblue;
+}
+
+.passengers ul li.tooltip:nth-child(4n+1) { 
+    background-color: rgb(92, 171, 245);
+}   
+.passengers ul li.tooltip:nth-child(4n+3) { 
+    background-color: rgb(64, 150, 231);
+}   
+
+
+li a{
+    text-transform: uppercase;
+}
+
+.submenu >  li a{
+    text-transform: initial;
+}
+
+li a:link, a:visited{
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: lightblue;
+    width: 150px;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    font-weight: lighter;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th{
+    border: 1px solid black;
+}
+tr{
+    border: 1px solid black;
+}
+
+td{
+    border: 1px solid black;
+}
+p{
+    border: 1px solid black;
+    padding-left: 2mm;
+    padding-top: 2mm;
+    padding-right: 2mm;
+    padding-bottom: 2mm;
+    width:auto;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
+p#aktualnosci{
+    font-size: 120%;
+    font-weight: bold;
+    background-color: cornflowerblue;
+}
+
+p#lista_lotow{
+    font-weight: bold;
+    font-size: 120%;
+    color: rgb(45, 83, 45);
+    text-align: center;
+    background-color: greenyellow;
+}
+p#ekstra{
+    padding-left: 0mm;
+    padding-top: 0mm;
+    padding-right: 0mm;
+    padding-bottom: 0mm;
+    position: absolute;
+    background-color: rgb(17, 207, 17);
+    z-index: 1;
+    top: 20px;
+    left: -80px;
+}
+
+p#odw{
+    font-weight: bold;
+    font-size: 120%;
+    color: black;
+    text-align: center;
+    background-color:orangered;
+}
+
+p#opis{
+    border:0;
+    padding-left: 0mm;
+    padding-top: 0mm;
+    padding-right: 0mm;
+    padding-bottom: 0mm;
+}
+
+p#pas{
+    border:0;
+    background-color: lightskyblue;
+}
+
+p#rezerwacja{
+    background: cornflowerblue;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+h4#war {
+    background-color: yellow;
+}
+h4#mon {
+    background-color: skyblue;
+}
+
+div {
+    position: relative ;
+}
+
+.opozniony{
+    background-color: yellow;
+}
+
+.b_opozniony{
+    background-color: orange;
+}
+
+.odwolany{
+    background-color: rgb(235, 57, 57);
+}
+
+.page{
+    display: flex;  
+    flex-flow: row wrap;
+    text-align: center;
+}
+.page > * {
+    padding: 10px;
+    flex: 1 100%;     
+}
+
+@media only screen and (min-device-width: 600px) {
+    .main { flex: 1 0 0; }
+    .late { flex: 1 0 0; }
+}
+
+@media only screen and (max-device-width: 1500px) and (min-device-width: 900px) {
+    .late { flex: 1 0 0; }  
+    .main { flex: 1 0 0; }
+    .menu { flex: 1 1 0; }
+    .flex {overflow: hidden;}
+}
+
+@media only screen and (min-device-width: 1501px) {
+    .menu { flex: 1 1 0; }
+}
+
+
+.header{
+    background: seashell;
+}
+
+@media all and (min-width: 1501px) {
+    .main    { flex: 3 0px; }
+    .menu { order: 1; } 
+    .main    { order: 2; }
+    .late { order: 3; }
+    .footer {order: 4; }
+  }
+
+@media screen and (max-width: 800px) {
+    .cityimg{display: none;} 
+    .pogoda{display: none;}
+    .page{flex-direction: column;}
+
+}
+
+@media screen and (min-width: 800px) and (max-width: 1500px) {
+    .page{flex-direction: column;}
+    .menu {order: 0}
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+  
+  /* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

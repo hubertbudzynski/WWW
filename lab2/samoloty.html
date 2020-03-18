@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lista lotów</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class='page'>
+        <header class='header'>Strona główna</header>
+        <ul class = 'menu'>
+            <li><a href="samoloty.html">Home</a></li>
+            <li>
+                <ul class ='menu submenu'>
+                    <li><a href="#aktualnosci">Aktualności</a></li>
+                    <li><a href="#lista_lotow">Lista lotów</a></li>
+                </ul>
+            </li>
+            <li><a href="szukaj_lotu.html">Szukaj lotu</a></li>
+            <li><a href="rezerwacja.html">Rezerwacja lotu</a></li>
+            <li><a href="promocje.html">Promocje</a></li>
+            <li><a href="o_nas.html">O nas</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        
+        <div class='main'>      
+            <p id="aktualnosci">Aktualności</p>
+            <article>Niestety z powodu koronawirusa podróżowanie jest utrudnione :(</article>
+            <p id="lista_lotow">Lista lotów</p>
+
+            <DIV id='loty'>
+                <p id="ekstra">Ale ekstra!</p>
+                <table>
+                    <thead>
+                        <tr>
+                        <th>nr lotu</th>	<th>skąd</th> <th>dokąd</th> <th>data</th><th>godzina</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        <tr>
+                        <td> <a href="lot1.html">1</a></td>	<td>Warszawa</td> <td>Monachium</td> <td>10.10.10</td><td>11:11</td>
+                        </tr>
+                        <tr>
+                        <td>2</td>	<td>Paryż</td> <td>Londyn</td> <td>11.11.11</td><td>22:22</td>
+                        </tr>
+                        <tr>
+                        <td>3</td>	<td>Paryż</td> <td>Londyn</td> <td>11.12.11</td><td>21:21</td>
+                        </tr>
+                        <tr>
+                        <td>4</td>	<td>Nowy York</td> <td>Berlin</td> <td>19.09.19</td><td>19:09</td>
+                        </tr>
+                        <tr>
+                        <td>5</td>	<td>Bukareszt</td> <td>Ateny</td> <td>15.07.20</td><td>9:13</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </DIV>
+        </div>
+
+        
+        <div class='late'>
+            <p id="odw">Loty opóźnione i odwołane</p>
+            <table>
+                <thead>
+                    <tr>
+                    <th>skąd</th> <th>dokąd</th> <th>data</th><th>Planowana godzina odlotu</th><th>Opoźnienie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="opozniony">
+                    <td>Warszawa</td> <td>Manchester</td> <td>16.03.20</td><td>16:20</td><td>50 minut</td>
+                    </tr>
+                    <tr class="opozniony">
+                    <td>Paryż</td> <td>Kopenhaga</td> <td>17.03.20</td><td>22:22</td><td>35 minut</td>
+                    </tr>
+                    <tr class="b_opozniony">
+                    <td>Szczecin</td> <td>Kraków</td> <td>16.03.20</td><td>12:30</td><td>123 minuty</td>
+                    </tr>
+                    <tr class="odwolany">
+                    <td>Szczecin</td> <td>Kraków</td> <td>16.03.20</td><td>18:00</td><td> ODWOŁANY </td>
+                    </tr>
+                    <tr class="odwolany">
+                    <td>Gdańsk</td> <td>Londyn</td> <td>17.03.20</td><td>13:30</td><td> ODWOŁANY </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p id='rezerwacja'> Zarezerwuj lot </p>
+            <form action="/nie_zaimplementowane.html" method="post">
+                <label for="fname">Imię:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+                <label for="lname">Nazwisko:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+                <label for="date">Data lotu:</label>
+                <input type="date" id="date" name="date"><br><br>
+                <input type="submit" value="Prześlij">
+                <input type="reset" value="Wyczyść" />
+              </form>
+        </div>
+
+        
+        <footer class='footer'><img src="seals.jpg" alt="logo firmy">Autor: Hubert Budzyński</footer>
+    </div>  
+   
+</body>
+</html>
