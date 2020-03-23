@@ -8,9 +8,9 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
-<body><header class='header'>Strona główna</header>
+<body>
     <div class='page'>
-        
+        <header class='header'>Strona główna</header>      
         <ul class = 'menu'>
             <li><a href="samoloty.html">Home</a></li>
             <li>
@@ -26,7 +26,7 @@
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
         
-        <div class='main tablet'>      
+        <div class='main'>      
             <p id="aktualnosci">Aktualności</p>
             <article>Niestety z powodu koronawirusa podróżowanie jest utrudnione :(</article>
             <p id="lista_lotow">Lista lotów</p>
@@ -61,7 +61,7 @@
         </div>
 
         
-        <div class='late tablet'>
+        <div class='late'>
             <p id="odw">Loty opóźnione i odwołane</p>
             <table>
                 <thead>
@@ -87,23 +87,26 @@
                     </tr>
                 </tbody>
             </table>
-
-            <p id='rezerwacja'> Zarezerwuj lot </p>
-            <form action="nie_zaimplementowane.html" method="post">
-                <label for="fname">Imię:</label>
-                <input type="text" id="fname" name="fname"><br><br>
-                <label for="lname">Nazwisko:</label>
-                <input type="text" id="lname" name="lname"><br><br>
-                <label for="date">Data lotu:</label>
-                <input type="date" id="date" name="date"><br><br>
-                <input type="submit" value="Prześlij">
-                <input type="reset" value="Wyczyść" />
-              </form>
+            <div class="rez">
+                <p id='rezerwacja'> Zarezerwuj lot </p>
+                <form action="nie_zaimplementowane.html" method="post">
+                    <label for="fname">Imię:</label>
+                    <input type="text" id="fname" name="fname"><br><br>
+                    <label for="lname">Nazwisko:</label>
+                    <input type="text" id="lname" name="lname"><br><br>
+                    <label for="date">Data lotu:</label>
+                    <input type="date" id="date" name="date"><br><br>
+                    <input type="submit" value="Prześlij">
+                    <input type="reset" value="Wyczyść" />
+                </form>
+            </div>
         </div>
 
         
         
-    </div>  
-   <footer class='footer'><img src="seals.jpg" alt="logo firmy">Autor: Hubert Budzyński</footer>
+     
+        <footer class='footer'><img src="seals.jpg" alt="logo firmy">Autor: Hubert Budzyński</footer>
+        
+    </div> 
 </body>
 </html>
