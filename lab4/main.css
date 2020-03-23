@@ -105,6 +105,7 @@ p#ekstra{
     z-index: 1;
     top: 20px;
     left: -80px;
+    z-index: 0;
 }
 
 p#odw{
@@ -307,7 +308,28 @@ div {
 .kontakt {
     text-align: center;
 }
-p.kontakt{  
+p.kontakt {  
     background-color: skyblue;
     font-weight: bold;
+}
+
+.komunikat {
+    position: fixed;
+    z-index: 1;
+    margin: 100px;
+    opacity: 80%;
+    background-color: rgb(23, 11, 68);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    top: 20%;
+    left: 24%;
+}
+
+.komunikat p {
+    border: none;
+    margin-top: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
 }
