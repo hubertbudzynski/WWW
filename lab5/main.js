@@ -1,0 +1,10 @@
+var el = document.querySelector("input[name=fname]");
+//el.style.display = "none";
+el.classList.add("hidden");
+var p = document.querySelector("p#lista_lotow");
+p.textContent += ' :)';
+var nowyElement = document.createElement("tr");
+nowyElement.classList.add("odwolany");
+nowyElement.innerHTML = "<td>Kraków</td> <td>Szczecin</td> <td>12.04.20</td><td>12:30</td><td> ODWOŁANY </td>";
+var tablicaSpoznien = document.querySelector(".late table");
+tablicaSpoznien.appendChild(nowyElement);
