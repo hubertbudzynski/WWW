@@ -8,5 +8,21 @@
         "only-arrow-functions": false,
         "no-console": false
     },
-    "rulesDirectory": []
+    "rulesDirectory": [] , 
+   
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": false,
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "target": "es2015"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+    
 }

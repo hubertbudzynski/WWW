@@ -17,22 +17,65 @@ if (tablicaSpoznien)
 let data = ("data-identyfikator-pasazera");
 
 let pasazerData = document.querySelectorAll(".passengers ul li[data-identyfikator-pasazera]");
-
-let maxVal : string = "" ;
-let maxImieNazwisko : string;
-for (const pD of Array.prototype.slice.call(pasazerData)) {
-    if (maxVal < pD.getAttribute("data-identyfikator-pasazera")) {
-        maxVal = pD.getAttribute("data-identyfikator-pasazera");
-        maxImieNazwisko = pD.innerHTML;
+console.log(pasazerData);
+if (pasazerData.length !== 0) {
+    let maxVal : string = "" ;
+    let maxImieNazwisko : string;
+    for (const pD of Array.prototype.slice.call(pasazerData)) {
+        if (maxVal < pD.getAttribute("data-identyfikator-pasazera")) {
+            maxVal = pD.getAttribute("data-identyfikator-pasazera");
+            maxImieNazwisko = pD.innerHTML;
+        }
     }
+
+    let i : number = 0;
+    while (i < maxImieNazwisko.length && maxImieNazwisko[i] !== '<') {
+        i++;
+    }
+
+    maxImieNazwisko = maxImieNazwisko.slice(0, i);
+
+    console.log(maxVal);
+    console.log(maxImieNazwisko);
 }
 
-let i : number = 0;
-while (i < maxImieNazwisko.length && maxImieNazwisko[i] !== '<') {
-    i++;
+
+function opoznij(czas : number) {
+    return new Promise((resolve, reject) =>
+        setTimeout(()=>{resolve()}, czas)
+    )
 }
 
-maxImieNazwisko = maxImieNazwisko.slice(0, i);
+function koloryTeczy(el: HTMLElement){
+    opoznij(1000)
+    .then(function() {
+        el.style.backgroundColor = 'red';
+        return opoznij(1000);
+    })
+    .then(function() {
+        el.style.backgroundColor = 'orange';
+        return opoznij(1000);
+    })
+    .then(function() {
+        el.style.backgroundColor = 'yellow';
+        return opoznij(1000);
+    })
+    .then(function() {
+        el.style.backgroundColor = 'green';
+        return opoznij(1000);
+    })
+    .then(function() {
+        el.style.backgroundColor = 'blue';
+        return opoznij(1000);
+    })
+    .then(function() {
+        el.style.backgroundColor = 'indigo';
+        return opoznij(1000);
+    })
+    .then(function() {
+        el.style.backgroundColor = 'purple';
+        return opoznij(1000);
+    })
+}
 
-console.log(maxVal);
-console.log(maxImieNazwisko);
+koloryTeczy(document.querySelector("body"));
