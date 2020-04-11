@@ -10,7 +10,6 @@ nowyElement.innerHTML = "<td>Kraków</td> <td>Szczecin</td> <td>12.04.20</td><td
 var tablicaSpoznien = document.querySelector(".late table");
 if (tablicaSpoznien)
     tablicaSpoznien.appendChild(nowyElement);
-var data = ("data-identyfikator-pasazera");
 var pasazerData = document.querySelectorAll(".passengers ul li[data-identyfikator-pasazera]");
 console.log(pasazerData);
 if (pasazerData.length !== 0) {
@@ -31,84 +30,11 @@ if (pasazerData.length !== 0) {
     console.log(maxVal);
     console.log(maxImieNazwisko);
 }
-// const kolorTeczy = (ms) => new Promise(res => setTimeout(res, ms));
-/*function koloryTeczy(el: HTMLElement, kolor : string, czas : number) {
-    return new Promise((resolve, reject) => {
-        setTimeout(function() {
-            el.style.backgroundColor = kolor;
-        }, czas);
-        resolve("gitara");
-    });
-}
-*/
 function opoznij(czas) {
     return new Promise(function (resolve, reject) {
         return setTimeout(function () { resolve(); }, czas);
     });
 }
-/*
-koloryTeczy(document.querySelector("body"), 'red', 1000) {
-    koloryTeczy(document.querySelector("body"), 'orange', 1000) {
-        koloryTeczy(document.querySelector("body"), 'yellow', 1000) {
-            koloryTeczy(document.querySelector("body"), 'green', 1000) {
-                koloryTeczy(document.querySelector("body"), 'blue', 1000) {
-                    koloryTeczy(document.querySelector("body"), 'indigo', 1000) {
-                    }
-                }
-            }
-        }
-    }
-}
-
-
-function teczoweKolory(el: HTMLElement) {
-
-    setTimeout(function () {
-
-        console.log('red');
-
-        el.style.backgroundColor = 'red';
-
-        setTimeout(function() {
-
-            el.style.backgroundColor = 'orange';
-
-            setTimeout(function() {
-
-                el.style.backgroundColor = 'yellow';
-
-                setTimeout(function() {
-
-                    el.style.backgroundColor = 'green';
-
-                    setTimeout(function() {
-
-                        el.style.backgroundColor = 'blue';
-
-                        setTimeout(function() {
-
-                            el.style.backgroundColor = 'indigo';
-
-                            setTimeout(function() {
-
-                                el.style.backgroundColor = 'purple';
-
-                            }, 1000);
-
-                        }, 1000);
-
-                    }, 1000);
-
-                }, 1000);
-
-            }, 1000);
-
-        }, 1000);
-
-    }, 1000);
-
-}
-*/
 function koloryTeczy(el) {
     opoznij(1000)
         .then(function () {
@@ -141,4 +67,16 @@ function koloryTeczy(el) {
     });
 }
 koloryTeczy(document.querySelector("body"));
-//# sourceMappingURL=main.js.map
+fetch('https://api.github.com/repos/Microsoft/TypeScript/commits')
+    .then(function (response) {
+    return response.json();
+}, function (err) { console.error("Fetch failed", err); })
+    .then(function (data) {
+    console.log(data.slice(-1));
+    console.log(data.slice(-1)['0']['author']['avatar_url']);
+    var imgSrc = data.slice(-1)['0']['author']['avatar_url'];
+    var pic = document.createElement("img");
+    pic.setAttribute('src', imgSrc);
+    var foot = document.querySelector("footer");
+    foot.appendChild(pic);
+}, function (err) { console.error("Display failed", err); });

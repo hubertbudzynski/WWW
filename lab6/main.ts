@@ -14,8 +14,6 @@ let tablicaSpoznien = document.querySelector(".late table") as HTMLTableElement;
 if (tablicaSpoznien)
     tablicaSpoznien.appendChild(nowyElement);
 
-let data = ("data-identyfikator-pasazera");
-
 let pasazerData = document.querySelectorAll(".passengers ul li[data-identyfikator-pasazera]");
 console.log(pasazerData);
 if (pasazerData.length !== 0) {
@@ -79,3 +77,17 @@ function koloryTeczy(el: HTMLElement){
 }
 
 koloryTeczy(document.querySelector("body"));
+
+fetch('https://api.github.com/repos/Microsoft/TypeScript/commits')
+  .then((response) => {
+    return response.json();
+  },(err) => {console.error("Fetch failed", err);})
+  .then((data) => {
+    console.log(data.slice(-1));
+    console.log(data.slice(-1)['0']['author']['avatar_url']);
+    let imgSrc : string = data.slice(-1)['0']['author']['avatar_url'];
+    let pic = document.createElement("img");
+    pic.setAttribute('src', imgSrc);
+    let foot = document.querySelector("footer");
+    foot.appendChild(pic);
+  }, (err)=> {console.error("Display failed", err);});
