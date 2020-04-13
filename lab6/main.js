@@ -66,7 +66,6 @@ function koloryTeczy(el) {
         return opoznij(1000);
     });
 }
-koloryTeczy(document.querySelector("body"));
 fetch('https://api.github.com/repos/Microsoft/TypeScript/commits')
     .then(function (response) {
     return response.json();
@@ -80,3 +79,54 @@ fetch('https://api.github.com/repos/Microsoft/TypeScript/commits')
     var foot = document.querySelector("footer");
     foot.appendChild(pic);
 }, function (err) { console.error("Display failed", err); });
+var late = document.body.querySelector(".late");
+var page = document.body.querySelector(".page");
+var formularzRezerwacji = document.body.querySelector(".rez");
+console.log(late);
+// late.addEventListener('click', changeColor, false);
+formularzRezerwacji.onclick = function (event) { event.stopPropagation(); };
+var clicks = 0;
+function fib(index) {
+    if (index === 0)
+        return 0;
+    if (index === 1)
+        return 1;
+    return fib(index - 1) + fib(index - 2);
+}
+page.onclick = function (event) {
+    var el = event.target;
+    if (el instanceof Element && late.contains(el)) {
+        if (late.style.backgroundColor === 'cyan')
+            late.style.backgroundColor = 'blue';
+        else
+            late.style.backgroundColor = 'cyan';
+    }
+    clicks++;
+    //alert(fib(10 * clicks));
+};
+var submitRez = document.body.querySelector(".late input[type='submit']");
+var skadRez = document.body.querySelector(".late select[id='skad_rezerwacja']");
+var dokadRez = document.body.querySelector(".late select[id='dokad_rezerwacja']");
+var imieRez = document.body.querySelector(".late input[id='fname']");
+var nazRez = document.body.querySelector(".late input[id='lname']");
+var dataRez = document.body.querySelector(".late input[id='date']");
+console.log(submitRez, skadRez, dokadRez, imieRez, nazRez);
+submitRez.disabled = true;
+function checkForm() {
+    console.log(dataRez.value);
+    console.log(new Date(new Date().toDateString()));
+    if (skadRez.selectedIndex !== 0 &&
+        dokadRez.selectedIndex !== 0 &&
+        dokadRez.selectedIndex !== skadRez.selectedIndex &&
+        imieRez.value !== "" &&
+        nazRez.value !== "" &&
+        new Date(dataRez.value) >= new Date(new Date().toDateString()))
+        submitRez.disabled = false;
+    else
+        submitRez.disabled = true;
+}
+dokadRez.oninput = function (event) { return checkForm(); };
+skadRez.oninput = function (event) { return checkForm(); };
+imieRez.oninput = function (event) { return checkForm(); };
+nazRez.oninput = function (event) { return checkForm(); };
+dataRez.oninput = function (event) { return checkForm(); };

@@ -76,7 +76,6 @@ function koloryTeczy(el: HTMLElement){
     })
 }
 
-koloryTeczy(document.querySelector("body"));
 
 fetch('https://api.github.com/repos/Microsoft/TypeScript/commits')
   .then((response) => {
@@ -91,3 +90,61 @@ fetch('https://api.github.com/repos/Microsoft/TypeScript/commits')
     let foot = document.querySelector("footer");
     foot.appendChild(pic);
   }, (err)=> {console.error("Display failed", err);});
+
+
+let late = document.body.querySelector(".late") as HTMLDivElement;
+let page = document.body.querySelector(".page") as HTMLDivElement;
+let formularzRezerwacji = document.body.querySelector(".rez") as HTMLDivElement;
+console.log(late);
+// late.addEventListener('click', changeColor, false);
+
+formularzRezerwacji.onclick = function(event){event.stopPropagation();}
+let clicks : number = 0;
+function fib(index : number) {
+    if (index === 0)
+        return 0;
+    if (index === 1)
+        return 1;
+    return fib(index - 1) + fib(index - 2);
+}
+page.onclick = function (event) {
+    let el = event.target;
+    if (el instanceof Element && late.contains(el)) {
+        if (late.style.backgroundColor === 'cyan')
+            late.style.backgroundColor = 'blue';
+        else 
+            late.style.backgroundColor = 'cyan';
+    }
+    clicks++;
+    //alert(fib(10 * clicks));
+}
+
+let submitRez = document.body.querySelector(".late input[type='submit']") as HTMLButtonElement;
+let skadRez = document.body.querySelector(".late select[id='skad_rezerwacja']") as HTMLSelectElement;
+let dokadRez = document.body.querySelector(".late select[id='dokad_rezerwacja']") as HTMLSelectElement;
+let imieRez = document.body.querySelector(".late input[id='fname']") as HTMLInputElement;
+let nazRez = document.body.querySelector(".late input[id='lname']") as HTMLInputElement;
+let dataRez = document.body.querySelector(".late input[id='date']") as HTMLInputElement;
+
+console.log(submitRez, skadRez, dokadRez, imieRez, nazRez);
+submitRez.disabled = true;
+function checkForm() {
+
+    console.log(dataRez.value);
+    console.log(new Date(new Date().toDateString()));
+    if (skadRez.selectedIndex !== 0 &&
+        dokadRez.selectedIndex !== 0 &&
+        dokadRez.selectedIndex !== skadRez.selectedIndex &&
+        imieRez.value !== "" &&
+        nazRez.value !== "" &&
+        new Date(dataRez.value) >= new Date(new Date().toDateString()))
+        submitRez.disabled = false;
+    else
+        submitRez.disabled = true;
+}
+
+dokadRez.oninput = (event) => checkForm();
+skadRez.oninput = (event) => checkForm();
+imieRez.oninput = (event) => checkForm();
+nazRez.oninput = (event) => checkForm();
+dataRez.oninput = (event) => checkForm();
