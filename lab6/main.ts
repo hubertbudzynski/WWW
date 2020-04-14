@@ -1,3 +1,5 @@
+import fib from './program.ts'
+
 let ele = document.querySelector("input[name=fname]") as HTMLInputElement;
 // el.style.display = "none";
 // el.classList.add("hidden");
@@ -100,13 +102,7 @@ console.log(late);
 
 formularzRezerwacji.onclick = function(event){event.stopPropagation();}
 let clicks : number = 0;
-function fib(index : number) {
-    if (index === 0)
-        return 0;
-    if (index === 1)
-        return 1;
-    return fib(index - 1) + fib(index - 2);
-}
+
 page.onclick = function (event) {
     let el = event.target;
     if (el instanceof Element && late.contains(el)) {
@@ -116,7 +112,7 @@ page.onclick = function (event) {
             late.style.backgroundColor = 'cyan';
     }
     clicks++;
-    //alert(fib(10 * clicks));
+    alert(fib(10 * clicks));
 }
 
 let submitRez = document.body.querySelector(".late input[type='submit']") as HTMLButtonElement;
