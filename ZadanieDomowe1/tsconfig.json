@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "suppressImplicitAnyIndexErrors": true,
+    },
+    "files": [
+        "main.ts",
+        "quiz.ts",
+        "result.ts"
+    ]
+}

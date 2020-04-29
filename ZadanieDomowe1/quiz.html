@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='quiz.css'>
+</head>
+<body>
+    <div id="prelude">
+        <article id="description"> Witaj w Quizie algebraicznym!
+            Przed Tobą 4 proste pytania, spróbuj rozwiązać je tak szybko, jak tylko potrafisz! 
+            Jak odpowiesz na każde pytanie, kliknij przycisk "zakończ". Za błędą odpowiedź w pytaniu 1. otrzymasz 5s kary,
+            w każdym kolejnym pytaniu kara za błędą odpowiedź jest o 5s większa!</article>
+        <p id="cancel" class="button">Anuluj</p>
+    </div>
+    <div id="question_bar">
+        <p id="question_bar_start">Skocz do pytania:</p>
+        <br><p id="end_button" class="button end_quiz">Zakończ</p>
+    </div>
+    <div id="questionArea">
+        <p id="question"></p>
+        <input id="answer_box" type="number">
+        <br><br>
+        <div id="navigation_buttons"></div>
+        <div id="timer">
+            <label id="minutes">00</label>:<label id="seconds">00</label>
+        </div>
+    </div>
+    <script src='quiz.js'></script>
+</body>
+</html>
