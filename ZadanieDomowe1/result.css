@@ -1,0 +1,17 @@
+#stats {
+    text-align: center;
+    font-size: larger;
+}
+
+#score {
+    text-align: center;
+    font-size: xx-large;
+}
+
+#save_buttons {
+    text-align: center;
+}
+
+body {
+    font-family: sans-serif ;
+}

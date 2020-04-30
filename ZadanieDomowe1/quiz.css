@@ -50,3 +50,40 @@ body{
     cursor: pointer;
 
 }
+
+@media only screen and (max-device-width: 700px) {
+    body{
+        display: grid;
+      
+        grid-template-columns: auto;
+        grid-template-rows: auto auto 15%;
+        gap: 10px 10px;
+    
+        font-family: sans-serif;
+    }
+    
+    #question_bar {
+        grid-column: 1 / span 1;
+        grid-row: 2 / 3;
+        height: auto;
+    }
+    
+    #questionArea {
+        grid-column: 1 / span 1;
+        grid-row: 1 / 2;
+        min-height: 250px;
+    }
+    
+    #prelude {
+        min-height: none;
+        grid-column: 1 / span 1;
+        grid-row: 3 / 4;
+    }
+
+    #description {
+        display: none;
+    }
+    #cancel {
+        margin: auto;
+    }
+}

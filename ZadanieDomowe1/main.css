@@ -1,5 +1,6 @@
 body {
     background-color: aqua;
+    font-family: sans-serif ;
 }
 
 .button {
@@ -30,6 +31,14 @@ body {
     font-size: 200%;
     text-align: center;
     color: blue;
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 200mm;
+    border-color: blue;
+    border-width: 1mm;
+    border-style: ridge;
+    margin: auto;
 }
 
 #start_messege {
@@ -54,4 +63,12 @@ body {
 
 .tooltip:hover {
     visibility: visible;
+}
+
+#name {
+    width: 70%;
+    max-width: 140mm;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }
