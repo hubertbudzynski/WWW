@@ -40,7 +40,7 @@ while (localStorage.getItem("score" + index.toString()) !== null) {
     leaderboard.push([localStorage.getItem("name" + index.toString()), +localStorage.getItem("score" + index.toString())]);
     index++;
 }
-if (localStorage.getItem("newScore") !== null)
+if (localStorage.getItem("newScore") !== null && localStorage.getItem("name") !== null)
     leaderboard.push([localStorage.getItem("name"), +localStorage.getItem("newScore")]);
 
 leaderboard.sort(([, scoreA], [, scoreB]) =>  scoreA - scoreB);

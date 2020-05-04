@@ -5,6 +5,7 @@ if (localStorage.getItem("finishedQuiz") !== 'true')
 var stats = document.getElementById("stats");
 var quizLength = +localStorage.getItem("quizLength");
 var totalTime = +localStorage.getItem("totalSeconds");
+localStorage.setItem("newScore", totalTime.toString());
 stats.innerHTML = "Twoje wyniki to: ";
 for (var questionId = 0; questionId < quizLength; questionId++) {
     var questionResult = document.createElement("p");
@@ -33,7 +34,6 @@ var statusButtonsArea = document.getElementById("save_buttons");
 statusButtonsArea.appendChild(saveButton);
 statusButtonsArea.appendChild(rejectButton);
 saveButton.addEventListener('click', function () {
-    localStorage.setItem("newScore", totalTime.toString());
     var quizStats = { results: new Array(), time: totalTime };
     for (var id = 0; id < quizLength; id++) {
         var result = {
@@ -56,7 +56,6 @@ saveButton.addEventListener('click', function () {
     window.location.href = "index.html";
 });
 rejectButton.addEventListener('click', function () {
-    localStorage.setItem("newScore", totalTime.toString());
     window.location.href = "index.html";
 });
 //# sourceMappingURL=result.js.map

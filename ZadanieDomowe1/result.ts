@@ -27,7 +27,8 @@ let stats = document.getElementById("stats");
 const quizLength : number = +localStorage.getItem("quizLength");
 
 let totalTime : number = +localStorage.getItem("totalSeconds");
-
+// Save the score for leaderboard.
+localStorage.setItem("newScore", totalTime.toString());
 
 // Display results. Correct answers will be displayed in green, incorrect in red.
 stats.innerHTML = "Twoje wyniki to: ";
@@ -68,11 +69,9 @@ let statusButtonsArea = document.getElementById("save_buttons");
 statusButtonsArea.appendChild(saveButton);
 statusButtonsArea.appendChild(rejectButton);
 
+
 // Save statistics on clicking 'save' button.
 saveButton.addEventListener('click', () => {
-    // Save the score for leaderboard.
-    localStorage.setItem("newScore", totalTime.toString());
-
     // Create a JSON statistics structure.
     const quizStats : quizStatistics = {results : new Array(), time : totalTime};
     for (let id = 0; id < quizLength; id++) {
@@ -100,7 +99,5 @@ saveButton.addEventListener('click', () => {
 
 // On clicking the 'reject' button, dont save stats.
 rejectButton.addEventListener('click', () => {
-    // Save the score for leaderboard.
-    localStorage.setItem("newScore", totalTime.toString());
     window.location.href = "index.html";
 })
