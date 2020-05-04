@@ -1,3 +1,5 @@
+if (localStorage.getItem("name") === null)
+    window.location.href = "index.html";
 if (localStorage.getItem("finishedQuiz") !== 'true')
     window.location.href = "quiz.html";
 var stats = document.getElementById("stats");

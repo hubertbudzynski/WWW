@@ -22,6 +22,10 @@ var quiz = {
         }
     ]
 };
+if (localStorage.getItem("name") === null)
+    window.location.href = "index.html";
+if (localStorage.getItem("finishedQuiz") !== null)
+    window.location.href = "result.html";
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var questionTimers = new Array(Object.keys(quiz.questions).length);

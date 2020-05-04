@@ -46,8 +46,6 @@ if (localStorage.getItem("finishedQuiz") === "true") {
     var stats_1 = localStorage.getItem("stats");
     localStorage.clear();
     localStorage.setItem("stats", stats_1);
-    console.log(stats_1);
-    console.log(JSON.parse(stats_1));
     for (var i = 0; i < Math.min(leaderboard.length, 5); i++) {
         localStorage.setItem("score" + i.toString(), leaderboard[i][1].toString());
         localStorage.setItem("name" + i.toString(), leaderboard[i][0]);

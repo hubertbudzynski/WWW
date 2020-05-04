@@ -25,8 +25,13 @@ const quiz =
         }
     ]
 }
+// Preventing accessing quiz via link.
+if (localStorage.getItem("name") === null)
+    window.location.href = "index.html";
 
 
+if (localStorage.getItem("finishedQuiz") !== null)
+    window.location.href = "result.html"
 ///////////////////////////////
 //      Timer functions      //
 ///////////////////////////////
@@ -297,7 +302,7 @@ if (localStorage.getItem("questionId") === null)
     localStorage.setItem("questionId", "0");
 
 
-// Display current question, 1 at first
+// Display current question, 1. at first
 displayQuestion(+localStorage.getItem("questionId"));
 
 // Set current status.
