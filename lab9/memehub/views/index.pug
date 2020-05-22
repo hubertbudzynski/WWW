@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1= message
+    img(src="https://i.redd.it/8hkekbti9a221.jpg")
+    h1="Special Deluxe Meme:"
+    img(src=headerMeme.url)
+    h1="Meme list"
+    ul
+        each meme in memes
+            li
+                a(href="meme/" + meme.id) #{meme.name}
+                p Cena:  #{meme.price}
+                img(src=meme.url)
+            br
