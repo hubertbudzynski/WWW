@@ -1,0 +1,30 @@
+{
+    "name": "memehub",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www",
+        "watch": "npm-watch",
+        "build": "tsc -w"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "csrf": "^3.1.0",
+        "csurf": "^1.11.0",
+        "debug": "~2.6.9",
+        "express": "~4.16.1",
+        "http-errors": "~1.6.3",
+        "morgan": "~1.9.1",
+        "npm-watch": "^0.6.0",
+        "pug": "^2.0.4",
+        "typescript": "^3.9.5"
+    },
+    "watch": {
+        "build": {
+            "patterns": [
+                "."
+            ],
+            "extensions": "ts"
+        }
+    }
+}
