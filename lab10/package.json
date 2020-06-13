@@ -11,6 +11,14 @@
   "dependencies": {
     "csurf": "^1.11.0",
     "express": "^4.17.1",
-    "pug": "^2.0.4"
+    "express-session": "^1.17.1",
+    "express-session-sqlite": "^2.0.5",
+    "express-sessions": "^1.0.6",
+    "pug": "^2.0.4",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.13",
+    "@types/sqlite3": "^3.1.6"
   }
 }

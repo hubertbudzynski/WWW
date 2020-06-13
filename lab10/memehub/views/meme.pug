@@ -5,13 +5,18 @@ block content
     img(src=meme.url)
     table(style='min-width:100px; text-align: center', border='2')
         tr 
-            th(colspan=meme.priceOverTime.length) Ceny (od aktualnej do najstarszej):
+            th(colspan=meme.prices.length) Ceny (od aktualnej do najstarszej):
         tr
-        each price in meme.priceOverTime
-            td(style='min-width:40px') #{price}
+        each price in meme.prices
+            td(style='min-width:40px') #{price.price}
 
-    h2="Podaj nową cenę mema:"
-    form(method="post", name="change_price")
-        input(type="hidden", name="_csfr", value=csfrProtection)
-        input(type="number" name="price")
-        input(type="submit", value="add")
+    
+
+    if user
+        h2="Podaj nową cenę mema:"
+        form(method="post", name="change_price")
+            input(type="hidden", name="_csrf", value=csrfToken)
+            input(type="number" name="price")
+            input(type="submit", value="add")
+
+    h4="Strona została wyświetlona " + views + " razy."

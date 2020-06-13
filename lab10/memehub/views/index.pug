@@ -1,16 +1,25 @@
 extends layout
 
 block content
+    if user
+        p Witaj #{user}! 
+            a(href="logout") logout
+    else
+        p Zaloguj się:
+        form(method="post")
+            input(type="text" name="login")
+            input(type="submit", value="In")
+    
     h1= message
     img(src="https://i.redd.it/8hkekbti9a221.jpg")
-    h1="Special Deluxe Meme:"
-    img(src=headerMeme.url)
     h1="Meme list"
 
     ul
         each meme in memes
             li
                 a(href="meme/" + meme.id) !{meme.name}
-                p Cena:  #{meme.price}
+                br
                 img(src=meme.url)
             br
+    
+    h4="Strona została wyświetlona " + views + " razy."
