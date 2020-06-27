@@ -1,0 +1,23 @@
+{
+  "name": "zadaniedomowe2",
+  "version": "1.0.0",
+  "description": "Aplikacja QUIZ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hubert Budzyński",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^3.0.0",
+    "sqlite3": "^4.2.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.13",
+    "@types/sqlite3": "^3.1.6",
+    "ts-node": "^8.10.2"
+  }
+}

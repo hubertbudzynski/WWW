@@ -1,0 +1,32 @@
+body {
+    height: auto;
+    width: auto;
+}
+
+#userResults {
+    font-size: 120%;
+    text-align: center;
+    color: blue;
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 200mm;
+    border-color: blue;
+    border-width: 1mm;
+    border-style: ridge;
+    margin: auto;
+}
+
+#scores {
+    font-size: 200%;
+    text-align: center;
+    color: blue;
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 200mm;
+    border-color: blue;
+    border-width: 1mm;
+    border-style: ridge;
+    margin: auto;
+}

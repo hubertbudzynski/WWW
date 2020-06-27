@@ -1,0 +1,33 @@
+extends layout
+block head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='/stylesheets/quiz.css')
+block content
+    div(id="prelude")
+        article(id="description")
+            | Witaj w Quizie algebraicznym!
+            | Przed Tobą 4 proste pytania, spróbuj rozwiązać je tak szybko, jak tylko potrafisz! 
+            | Jak odpowiesz na każde pytanie, kliknij przycisk "zakończ". Za błędą odpowiedź w pytaniu 1. otrzymasz 5s kary,
+            | w każdym kolejnym pytaniu kara za błędą odpowiedź jest o 5s większa!
+    div(id="question_bar")
+        p(id="question_bar_start")
+            | Skocz do pytania:
+        br
+        p(id="end_button" class="button end_quiz") Zakończ
+    div(id="questionArea")
+        p(id="question")
+        input(id="answer_box" type="number")
+        br
+        br
+        div(id="navigation_buttons")
+        div(id="timer")
+            label(id="minutes") 00
+            | :
+            label(id="seconds") 00
+
+    form(method="post")
+      input(type="hidden", name="_csrf", value=csrfToken)
+      br
+
+    script(src="/javascripts/quiz.js")

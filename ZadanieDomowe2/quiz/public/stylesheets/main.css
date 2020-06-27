@@ -1,0 +1,79 @@
+body {
+    background-color: aqua;
+    font-family: sans-serif;
+}
+
+.button {
+    background-color: rgb(31, 133, 218);
+    border-style: solid;
+    border-color: rgb(96, 96, 212);
+    border-width: 2px 2px 2px 2px;
+    border-radius: 12px;
+    padding: 15px 32px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#start_button {
+    text-align: center;
+    align-self: center;
+    margin: 2%;
+}
+
+#start_button_div {
+    text-align: center;
+}
+
+#scores {
+    font-size: 200%;
+    text-align: center;
+    color: blue;
+    background-color: aliceblue;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 200mm;
+    border-color: blue;
+    border-width: 1mm;
+    border-style: ridge;
+    margin: auto;
+}
+
+#start_messege {
+    font-size: 120%;
+    text-align: center;
+    color: blue;
+}
+
+#content {
+    font-size: 170%;
+    text-align: center;
+    color: blue;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover {
+    visibility: visible;
+}
+
+#name {
+    width: 70%;
+    max-width: 140mm;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}

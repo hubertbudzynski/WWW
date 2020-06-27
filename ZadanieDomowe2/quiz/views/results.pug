@@ -1,0 +1,31 @@
+extends layout
+block head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='/stylesheets/results.css')
+block content
+    if topScores.length !== 0
+        div(id="userResults")
+            if userResults
+                | Twoje wyniki:
+                for questionResult in userResults.questionResults
+                    if questionResult.penaltyGiven === 0
+                        p(style="color: green") #{questionResult.question} &#9989
+                    else 
+                        p(style="color: red") #{questionResult.question} &#10060
+                    p Poprawna odpowiedź: #{questionResult.solution}
+                    | Czas: #{questionResult.timeSpent}
+                    br
+                    | Średni czas odpowiedzi wszystkich użytkowników: #{questionResult.avgTime}
+        
+        div(id="scores")
+            | Leaderboard
+            ul(style="list-style: none")
+                each score, index in topScores
+                    li= index + 1 + ". " + score.username + " " + score.score
+    else
+        p(style="margin: auto; text-align: center") Nikt nie rozwiązał tego quizu :(
+    
+    a(href="/") 
+        p(style="margin: auto; text-align: center") Powrót do strony głównej
+    script(src="/javascripts/quiz.js")
