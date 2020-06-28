@@ -65,10 +65,11 @@ var get = function (db) { return promisify(db.get.bind(db)); };
 var all = function (db) { return promisify(db.all.bind(db)); };
 function initQuizDB() {
     return __awaiter(this, void 0, void 0, function () {
-        var db, _i, quizes_1, quiz, id, _a, _b, question;
+        var db, _i, quizes_1, quiz, id, _a, _b, question, error_1;
         return __generator(this, function (_c) {
             switch (_c.label) {
                 case 0:
+                    _c.trys.push([0, 19, , 20]);
                     sqlite3.verbose();
                     db = new sqlite3.Database('baza.db');
                     return [4 /*yield*/, run(db)("BEGIN TRANSACTION;")];
@@ -134,7 +135,12 @@ function initQuizDB() {
                 case 18:
                     _c.sent();
                     db.close();
-                    return [2 /*return*/];
+                    return [3 /*break*/, 20];
+                case 19:
+                    error_1 = _c.sent();
+                    console.log(error_1, "XD");
+                    return [3 /*break*/, 20];
+                case 20: return [2 /*return*/];
             }
         });
     });
@@ -225,7 +231,7 @@ function getUserQuizSessions(db, userId) {
 }
 function addUserQuizResult(db, userId, quizId, score, questionResults) {
     return __awaiter(this, void 0, void 0, function () {
-        var quizSessionId, _i, questionResults_1, questionResult, error_1;
+        var quizSessionId, _i, questionResults_1, questionResult, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, get(db)("SELECT id FROM quiz_session WHERE  user_id = ? AND quiz_id = ?", [userId, quizId])];
@@ -250,8 +256,8 @@ function addUserQuizResult(db, userId, quizId, score, questionResults) {
                     _a.sent();
                     return [3 /*break*/, 7];
                 case 6:
-                    error_1 = _a.sent();
-                    console.log(error_1);
+                    error_2 = _a.sent();
+                    console.log(error_2);
                     return [2 /*return*/, false];
                 case 7: return [2 /*return*/, true];
             }

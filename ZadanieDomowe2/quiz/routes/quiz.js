@@ -12,7 +12,6 @@ router.get('/', csrfProtection, function(req, res) {
 router.post('/:quizId', csrfProtection, function(req, res) {
     let answers = JSON.parse(req.body.answers);
     answers.userId = req.session.user_id;
-    console.log(answers);
 
     quizDB.checkUserAnswers(req.db, req.session.user_id, answers.quizId, answers).then((valid) => {
         if (valid)

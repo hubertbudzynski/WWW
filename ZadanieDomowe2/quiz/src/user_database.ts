@@ -10,15 +10,20 @@ const get = (db : sqlite3.Database) => promisify(db.get.bind(db));
 
 async function initUserDB() {
   sqlite3.verbose();
+
   const db: sqlite3.Database = new sqlite3.Database('baza.db');
   await run(db)("BEGIN TRANSACTION;");
   await run(db)("DROP TABLE IF EXISTS users");
 
-  await run(db)('CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(255), password VARCHAR(255));');
+  await run(db)('CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(255), password VARCHAR(255), last_pass_id VARCHAR(255));');
   let pass = sha256("user1").toString();
-  await run(db)('INSERT INTO users (username, password) VALUES (?, ?)', ["user1", pass]);
+  let pass_id = sha256(Math.random().toString()).toString();  
+
+  await run(db)('INSERT INTO users (username, password, last_pass_id) VALUES (?, ?, ?)', ["user1", pass, pass_id]);
   pass = sha256("user2").toString();
-  await run(db)('INSERT INTO users (username, password) VALUES (?, ?)', ["user2", pass]);
+  pass_id = sha256(Math.random().toString()).toString(); 
+
+  await run(db)('INSERT INTO users (username, password, last_pass_id) VALUES (?, ?, ?)', ["user2", pass, pass_id]);
   await run(db)("COMMIT TRANSACTION;");
   db.close();
 }
@@ -26,12 +31,20 @@ async function initUserDB() {
 async function logUser(username: string, password: string, db : sqlite3.Database) {
   sqlite3.verbose();
   const pass = sha256(password).toString();
-  const user = await get(db)("SELECT id, username FROM users WHERE username = ? AND password = ?", [username, pass]);
+  const user = await get(db)("SELECT id, username, last_pass_id FROM users WHERE username = ? AND password = ?", [username, pass]);
   return user;
 }
 
 async function changePassword(userId: number, password: string, db: sqlite3.Database) {
   const pass = sha256(password).toString();
-  await run(db)('UPDATE users  SET password = ? WHERE id = ?;', [pass, userId]);
+  let pass_id = sha256(Math.random().toString()).toString();
+
+  await run(db)('UPDATE users  SET password = ?, last_pass_id = ?  WHERE id = ?;', [pass, pass_id, userId]);
 }
-module.exports = { initUserDB, logUser, changePassword };
+
+async function getLastPassId(userId: number, db: sqlite3.Database) {
+  const pass_id = await get(db)("SELECT last_pass_id FROM users WHERE id = ?", [userId]);
+
+  return pass_id.last_pass_id;
+}
+module.exports = { initUserDB, logUser, changePassword, getLastPassId };

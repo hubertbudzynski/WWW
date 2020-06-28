@@ -19,12 +19,11 @@ router.get('/', csrfProtection, function(req, res, next) {
 router.post('/', csrfProtection, function(req, res, next) {
     if (req.body.action === "login") {
         logUser(req.body.login, req.body.password, req.db).then((user) => {
-            console.log(req.body)
-            if (user != undefined) {
+            if (user !== undefined) {
                 req.session.login = user.username;
                 req.session.user_id = user.id;
+                req.session.last_pass_id = user.last_pass_id;
             }
-            console.log(user);
             res.redirect('/');
         })
     } else if (req.body.action === "logout") {
@@ -32,16 +31,18 @@ router.post('/', csrfProtection, function(req, res, next) {
             delete req.session.login;
         if (req.session.user_id)
             delete req.session.user_id;
+        if (req.session.last_pass_id)
+            delete req.session.last_pass_id;
 
         res.redirect('/');
     } else if (req.body.action === "change_password") {
         changePassword(req.session.user_id, req.body.new_password, req.db).then(() => {
-            req.session.regenerate((err) => {})
+            req.session.destroy();
             res.redirect('/');
-
         })
     }
 
 });
+
 
 module.exports = router;

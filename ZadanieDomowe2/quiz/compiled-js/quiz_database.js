@@ -147,7 +147,6 @@ function getQuizes(db, userId) {
                 case 0: return [4 /*yield*/, all(db)("SELECT * FROM quiz WHERE id NOT IN (SELECT quiz_id FROM quiz_session WHERE user_id = ? AND score != ?)", [userId, -1])];
                 case 1:
                     quiz = _a.sent();
-                    console.log(quiz);
                     return [2 /*return*/, quiz];
             }
         });
@@ -196,7 +195,6 @@ function getUserQuizResult(db, userId, quizId) {
                     return [3 /*break*/, 4];
                 case 8:
                     userQuizResult = { quizId: quizId, quizName: quiz.quiz_name, questionResults: questionResults };
-                    console.log(userQuizResult);
                     return [2 /*return*/, userQuizResult];
             }
         });
@@ -231,7 +229,6 @@ function addUserQuizResult(db, userId, quizId, score, questionResults) {
                 case 0: return [4 /*yield*/, get(db)("SELECT id FROM quiz_session WHERE  user_id = ? AND quiz_id = ?", [userId, quizId])];
                 case 1:
                     quizSessionId = _a.sent();
-                    console.log(quizId, userId, quizSessionId, score, questionResults);
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 6, , 7]);
@@ -264,7 +261,6 @@ function isQuestionAnswer(object) {
         'timeSpent' in object;
 }
 function isQuizAnswers(object) {
-    console.log('quizId' in object, 'userId' in object, 'answers' in object, Array.isArray(object.answers), object.answers.every(isQuestionAnswer));
     return 'quizId' in object &&
         'userId' in object &&
         'answers' in object &&
@@ -343,7 +339,6 @@ function getQuiz(db, userId, quizId) {
                     return [4 /*yield*/, all(db)("SELECT id, question, penalty FROM questions WHERE quiz_id = ?", [quizId])];
                 case 2:
                     questions = _a.sent();
-                    console.log(userId, quizId, quizName, questions);
                     return [2 /*return*/, { id: quizId, name: quizName.quiz_name, questions: questions }];
             }
         });

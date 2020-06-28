@@ -22,6 +22,7 @@ const all = (db : sqlite3.Database) => promisify(db.all.bind(db));
 async function initQuizDB() {
     sqlite3.verbose();
     const db = new sqlite3.Database('baza.db');
+    
     await run(db)("BEGIN TRANSACTION;");
     await run(db)("DROP TABLE IF EXISTS quiz");
     await run(db)("DROP TABLE IF EXISTS questions");
@@ -69,7 +70,6 @@ interface QuizSession {
 
 async function getQuizes(db : sqlite3.Database, userId : number) {
     const quiz = await all(db)("SELECT * FROM quiz WHERE id NOT IN (SELECT quiz_id FROM quiz_session WHERE user_id = ? AND score != ?)", [userId, -1]);
-    console.log(quiz);
     return quiz;
 }
 
@@ -99,7 +99,6 @@ async function getUserQuizResult(db: sqlite3.Database, userId: number, quizId: n
     }
 
     const userQuizResult: QuizSession = { quizId, quizName: quiz.quiz_name, questionResults };
-    console.log(userQuizResult);
 
     return userQuizResult;
 }
@@ -119,7 +118,6 @@ async function getUserQuizSessions(db: sqlite3.Database, userId: number) {
 
 async function addUserQuizResult(db: sqlite3.Database, userId: number, quizId: number, score: number, questionResults: QuestionResult[]) {
     const quizSessionId = await get(db)("SELECT id FROM quiz_session WHERE  user_id = ? AND quiz_id = ?", [userId, quizId]);
-    console.log(quizId, userId, quizSessionId, score, questionResults);
     try {
         await run(db)("BEGIN TRANSACTION");
         await run(db)("UPDATE quiz_session SET score = ? WHERE user_id = ? AND quiz_id = ?", [score, userId, quizId]);
@@ -157,7 +155,6 @@ function isQuestionAnswer(object: any): object is QuestionAnswer {
 }
 
 function isQuizAnswers(object: any): object is QuizAnswers {
-    console.log('quizId' in object, 'userId' in object, 'answers' in object, Array.isArray(object.answers), object.answers.every(isQuestionAnswer))
     return 'quizId' in object &&
         'userId' in object &&
         'answers' in object &&
@@ -211,7 +208,7 @@ async function getQuiz(db: sqlite3.Database, userId: number, quizId: number) {
     if (quizName === undefined)
         return undefined;
     const questions = await all(db)("SELECT id, question, penalty FROM questions WHERE quiz_id = ?", [quizId]);
-    console.log(userId, quizId, quizName, questions);
+
 
     return {id : quizId, name : quizName.quiz_name, questions};
 }

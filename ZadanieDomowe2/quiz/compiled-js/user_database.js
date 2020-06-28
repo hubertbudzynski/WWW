@@ -68,7 +68,7 @@ var run = function (db) { return promisify(db.run.bind(db)); };
 var get = function (db) { return promisify(db.get.bind(db)); };
 function initUserDB() {
     return __awaiter(this, void 0, void 0, function () {
-        var db, pass;
+        var db, pass, pass_id;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -80,15 +80,17 @@ function initUserDB() {
                     return [4 /*yield*/, run(db)("DROP TABLE IF EXISTS users")];
                 case 2:
                     _a.sent();
-                    return [4 /*yield*/, run(db)('CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(255), password VARCHAR(255));')];
+                    return [4 /*yield*/, run(db)('CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(255), password VARCHAR(255), last_pass_id VARCHAR(255));')];
                 case 3:
                     _a.sent();
                     pass = sha256_1.default("user1").toString();
-                    return [4 /*yield*/, run(db)('INSERT INTO users (username, password) VALUES (?, ?)', ["user1", pass])];
+                    pass_id = sha256_1.default(Math.random().toString()).toString();
+                    return [4 /*yield*/, run(db)('INSERT INTO users (username, password, last_pass_id) VALUES (?, ?, ?)', ["user1", pass, pass_id])];
                 case 4:
                     _a.sent();
                     pass = sha256_1.default("user2").toString();
-                    return [4 /*yield*/, run(db)('INSERT INTO users (username, password) VALUES (?, ?)', ["user2", pass])];
+                    pass_id = sha256_1.default(Math.random().toString()).toString();
+                    return [4 /*yield*/, run(db)('INSERT INTO users (username, password, last_pass_id) VALUES (?, ?, ?)', ["user2", pass, pass_id])];
                 case 5:
                     _a.sent();
                     return [4 /*yield*/, run(db)("COMMIT TRANSACTION;")];
@@ -108,7 +110,7 @@ function logUser(username, password, db) {
                 case 0:
                     sqlite3.verbose();
                     pass = sha256_1.default(password).toString();
-                    return [4 /*yield*/, get(db)("SELECT id, username FROM users WHERE username = ? AND password = ?", [username, pass])];
+                    return [4 /*yield*/, get(db)("SELECT id, username, last_pass_id FROM users WHERE username = ? AND password = ?", [username, pass])];
                 case 1:
                     user = _a.sent();
                     return [2 /*return*/, user];
@@ -118,12 +120,13 @@ function logUser(username, password, db) {
 }
 function changePassword(userId, password, db) {
     return __awaiter(this, void 0, void 0, function () {
-        var pass;
+        var pass, pass_id;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     pass = sha256_1.default(password).toString();
-                    return [4 /*yield*/, run(db)('UPDATE users  SET password = ? WHERE id = ?;', [pass, userId])];
+                    pass_id = sha256_1.default(Math.random().toString()).toString();
+                    return [4 /*yield*/, run(db)('UPDATE users  SET password = ?, last_pass_id = ?  WHERE id = ?;', [pass, pass_id, userId])];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -131,4 +134,17 @@ function changePassword(userId, password, db) {
         });
     });
 }
-module.exports = { initUserDB: initUserDB, logUser: logUser, changePassword: changePassword };
+function getLastPassId(userId, db) {
+    return __awaiter(this, void 0, void 0, function () {
+        var pass_id;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, get(db)("SELECT last_pass_id FROM users WHERE id = ?", [userId])];
+                case 1:
+                    pass_id = _a.sent();
+                    return [2 /*return*/, pass_id.last_pass_id];
+            }
+        });
+    });
+}
+module.exports = { initUserDB: initUserDB, logUser: logUser, changePassword: changePassword, getLastPassId: getLastPassId };

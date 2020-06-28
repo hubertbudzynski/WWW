@@ -14,7 +14,8 @@ block content
                     else 
                         p(style="color: red") #{questionResult.question} &#10060
                     p Poprawna odpowiedź: #{questionResult.solution}
-                    | Czas: #{questionResult.timeSpent}
+                    | Czas: 
+                    p(class="user_time" id =questionResult.questionId) #{questionResult.timeSpent}
                     br
                     | Średni czas odpowiedzi wszystkich użytkowników: #{questionResult.avgTime}
         

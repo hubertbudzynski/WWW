@@ -9,7 +9,6 @@ router.get('/:quizId', function(req, res) {
             return;
         }
         quizDB.getUserQuizResult(req.db, req.session.user_id, req.params.quizId).then((userResults) => {
-            console.log(topScores, userResults)
             if (topScores !== undefined)
                 res.render('results', { userResults, topScores });
             else

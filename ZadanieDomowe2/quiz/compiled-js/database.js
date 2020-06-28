@@ -68,8 +68,9 @@ function initDB() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             sqlite3.verbose();
-            userDatabase.initUserDB();
-            quizDatabase.initQuizDB();
+            userDatabase.initUserDB().then(function () {
+                quizDatabase.initQuizDB();
+            });
             return [2 /*return*/];
         });
     });

@@ -10,10 +10,14 @@ const run = (db : sqlite3.Database) => promisify(db.run.bind(db));
 const get = (db: sqlite3.Database) => promisify(db.get.bind(db));
 
 async function initDB() {
+
     sqlite3.verbose();
 
-    userDatabase.initUserDB();
-    quizDatabase.initQuizDB();
+    userDatabase.initUserDB().then(() => {
+        quizDatabase.initQuizDB();
+    })
+    
+
 }
 
 
