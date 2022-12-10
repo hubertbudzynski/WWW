@@ -24,7 +24,7 @@
         "crypto-js": "^4.0.0",
         "csurf": "^1.11.0",
         "debug": "~2.6.9",
-        "express": "~4.16.1",
+        "express": "~4.17.3",
         "express-mysql-session": "^2.1.4",
         "express-session-sqlite": "^2.0.5",
         "http-errors": "~1.6.3",
